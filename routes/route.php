@@ -1,7 +1,4 @@
 <?php
-
-use libs\Response;
-
 Router::post('accounts/login', 'app\controllers\AuthController@login');
 Router::post('accounts/register', 'app\controllers\AuthController@register');
 Router::delete('accounts/logout', 'app\controllers\AuthController@logout');

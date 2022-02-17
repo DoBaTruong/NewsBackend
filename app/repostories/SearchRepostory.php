@@ -2,6 +2,7 @@
 namespace app\repostories;
 
 use app\exceptions\InternalServerException;
+use app\models\CategoryModel;
 use app\models\NewsModel;
 use libs\Response;
 
@@ -67,4 +68,44 @@ class SearchRepostory
             exit();
         }
     }
+
+    public static function getNewsByCategory($slug, $page, $limit)
+    {
+        $model = new NewsModel();
+        $cateModel = new CategoryModel();
+
+        try {
+            $date = date('Y-m-d H:i:s', time());
+            $from = $page * $limit - $limit;
+            $categores = $cateModel->all();
+            $cateModel->where(['slug', $slug]);
+            $category = $cateModel->first();
+            $result = [$category['id']];
+            recursive($categores, $category['id'], $result);
+            if(count($result)) {
+                $stringId = $result[0];
+                $model->where(['category_id', $stringId]);
+            } else {
+                $stringId = implode(', ', $result);
+                $model->where(['category_id', ' IN ', $stringId]);
+            }
+            $model->where(['published_at', '<=', $date]);
+            $total = $model->total();
+            $model->limit([$from, $limit]);
+            $model->order(['published_at', 'DESC']);
+            $news = $model->get();
+
+            return [
+                'total' => $total,
+                'news' => $news,
+            ];
+        } catch (\Exception $ex) {
+            $excep = new InternalServerException();
+            Response::json(200,[
+                'code' => $excep->getCode(),
+                'message' => $excep->getMessage()
+            ]);
+            exit();
+        }
+    } 
 }

@@ -108,7 +108,6 @@ class NewsRepostory
             $category = $model->first();
             $detail = $detailModel->getById($category['id']);
             $category['content'] = $detail['content'];
-
             return $category;
         } catch (\Exception $ex) {
             $excep = new InternalServerException();
