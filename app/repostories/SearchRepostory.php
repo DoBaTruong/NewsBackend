@@ -108,4 +108,87 @@ class SearchRepostory
             exit();
         }
     } 
+
+    public static function getHotNews($page, $limit)
+    {
+        $model = new NewsModel();
+
+        try {
+            $date = date('Y-m-d H:i:s', time());
+            $from = $page * $limit - $limit;
+            $model->where(['published_at', '<=', $date]);
+            $total = $model->total();
+            $model->limit([$from, $limit]);
+            $model->order(['published_at', 'DESC']);
+            $news = $model->get();
+
+            return [
+                'total' => $total,
+                'news' => $news
+            ];
+        } catch (\Exception $ex) {
+            $excep = new InternalServerException();
+            Response::json(200,[
+                'code' => $excep->getCode(),
+                'message' => $excep->getMessage()
+            ]);
+            exit();
+        }
+    }
+
+    public static function getCommentNews($page, $limit)
+    {
+        $model = new NewsModel();
+
+        try {
+            $date = date('Y-m-d H:i:s', time());
+            $from = $page * $limit - $limit;
+            $model->where(['published_at', '<=', $date]);
+            $model->where(['comment', '>=', 0]);
+            $total = $model->total();
+            $model->order(['comment', 'DESC']);
+            $model->limit([$from, $limit]);
+            $news = $model->get();
+
+            return [
+                'total' => $total,
+                'news' => $news
+            ];
+        } catch (\Exception $ex) {
+            $excep = new InternalServerException();
+            Response::json(200,[
+                'code' => $excep->getCode(),
+                'message' => $excep->getMessage()
+            ]);
+            exit();
+        }
+    }
+
+    public static function getReadNews($page, $limit)
+    {
+        $model = new NewsModel();
+
+        try {
+            $date = date('Y-m-d H:i:s', time());
+            $from = $page * $limit - $limit;
+            $model->where(['published_at', '<=', $date]);
+            $model->where(['viewer', '>=', 0]);
+            $total = $model->total();
+            $model->order(['viewer', 'DESC']);
+            $model->limit([$from, $limit]);
+            $news = $model->get();
+
+            return [
+                'total' => $total,
+                'news' => $news
+            ];
+        } catch (\Exception $ex) {
+            $excep = new InternalServerException();
+            Response::json(200,[
+                'code' => $excep->getCode(),
+                'message' => $excep->getMessage()
+            ]);
+            exit();
+        }
+    }
 }
