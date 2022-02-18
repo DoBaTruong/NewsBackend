@@ -14,9 +14,13 @@ class NewsController extends Controller
         $news = NewsRepostory::getBySlug($slug);
 
         NewsRepostory::updateNewsViews($news['id'], ++$news['viewer']);
+
+        $relateds = NewsRepostory::getRelated($news['category_id']);
+
         Response::json(200,[
             'code' => 200,
-            'news' => $news
+            'news' => $news,
+            'relateds' => $relateds
         ]);
     }
 
