@@ -21,6 +21,7 @@ Router::post('news/create', 'app\controllers\NewsController@create', ['checkToke
 Router::get('news/{page}/{limit}', 'app\controllers\NewsController@get');
 Router::delete('news/delete', 'app\controllers\NewsController@delete', ['checkToken']);
 Router::get('news/{slug}', 'app\controllers\NewsController@getBySlug');
+Router::get('admin/news/{slug}', 'app\controllers\NewsController@getAdminBySlug');
 Router::put('news/update/{id}', 'app\controllers\NewsController@update', ['checkToken']);
 Router::get('home/hot', 'app\controllers\HomeController@getSlide');
 Router::get('home/read-a-lot', 'app\controllers\HomeController@getNewsReadALot');

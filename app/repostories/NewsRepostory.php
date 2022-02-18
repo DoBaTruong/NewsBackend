@@ -105,10 +105,27 @@ class NewsRepostory
         $model->where(['slug', $slug]);
 
         try {
-            $category = $model->first();
-            $detail = $detailModel->getById($category['id']);
-            $category['content'] = $detail['content'];
-            return $category;
+            $news = $model->first();
+            $detail = $detailModel->getById($news['id']);
+            $news['content'] = $detail['content'];
+            return $news;
+        } catch (\Exception $ex) {
+            $excep = new InternalServerException();
+            Response::json(200,[
+                'code' => $excep->getCode(),
+                'message' => $excep->getMessage()
+            ]);
+            exit();
+        }
+    }
+
+    public static function updateNewsViews($id, $count)
+    {
+        $model = new NewsModel();
+
+        try {
+            $status = $model->update($id, ['viewer' => $count]);
+            return $status;
         } catch (\Exception $ex) {
             $excep = new InternalServerException();
             Response::json(200,[

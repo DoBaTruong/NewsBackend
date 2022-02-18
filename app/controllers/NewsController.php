@@ -11,11 +11,22 @@ class NewsController extends Controller
 {
     public function getBySlug($slug)
     {
-        $category = NewsRepostory::getBySlug($slug);
+        $news = NewsRepostory::getBySlug($slug);
+
+        NewsRepostory::updateNewsViews($news['id'], ++$news['viewer']);
+        Response::json(200,[
+            'code' => 200,
+            'news' => $news
+        ]);
+    }
+
+    public function getAdminBySlug($slug)
+    {
+        $news = NewsRepostory::getBySlug($slug);
 
         Response::json(200,[
             'code' => 200,
-            'category' => $category
+            'news' => $news
         ]);
     }
 
