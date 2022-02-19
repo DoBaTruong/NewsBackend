@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `detail_news` (
   `news_id` bigint(200) unsigned NOT NULL,
   `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table online_news.detail_news: ~13 rows (approximately)
 /*!40000 ALTER TABLE `detail_news` DISABLE KEYS */;
@@ -111,27 +111,27 @@ CREATE TABLE IF NOT EXISTS `news` (
   `featured` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `authors` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `viewer` bigint(200) unsigned NOT NULL DEFAULT '0',
-  `comment` bigint(20) DEFAULT NULL,
+  `comment` bigint(20) DEFAULT '0',
   `published_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table online_news.news: ~13 rows (approximately)
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
 INSERT INTO `news` (`id`, `title`, `slug`, `abstract`, `photo`, `category_id`, `featured`, `authors`, `viewer`, `comment`, `published_at`) VALUES
-	(1, 'Ăn uống vô độ ngày Tết gây hại thế nào', 'an-uong-vo-do-ngay-tet-gay-hai-the-nao', 'Ăn uống mất kiểm soát với tâm lý “thả ga một lần một năm&amp;quot; có thể dẫn đến các vấn đề sức khỏe như tăng cân, trào ngược dạ dày, rối loạn giấc ngủ. ', 'img/news/an-uong-vo-do-ngay-tet-gay-hai-the-nao.jpeg', 1, 1, 'Thục Linh', 0, NULL, '2022-02-16 11:26:00'),
-	(2, 'Ăn gì thanh lọc cơ thể sau Tết?', 'an-gi-thanh-loc-co-the-sau-tet', 'Sau Tết tôi bị tăng cân và ngấy thức ăn, nên bổ sung món gì vào thực đơn để thanh lọc cơ thể, ăn ngon miệng và không béo. (Ngọc, 36 tuổi, Hà Nội) ', 'img/news/an-gi-thanh-loc-co-the-sau-tet.jpeg', 1, 0, 'Lương y Bùi Đắc Sáng', 1, NULL, '2022-02-16 11:26:00'),
-	(3, 'Bí quyết giữ chân các ông chồng thích ăn cơm “nhà hàng xóm”', 'bi-quyet-giu-chan-cac-ong-chong-thich-an-com-nha-hang-xom', 'Bếp Dasavis với các Đầu bếp Thượng hạng tận tâm chế biến các món ăn ngon sẽ giúp các chị em không còn phải vất vả đi chợ nấu cơm hay chế biến món nhậu cho các ông chồng sau ngày dài bận rộn với công việc. Các bà vợ sẽ không phải mệt mỏi với những cuộc điện thoại gọi chồng về khi các ông ấy la cà ngoài hàng quán hay sang để vợ ông hàng xóm nấu.', 'img/news/bi-quyet-giu-chan-cac-ong-chong-thich-an-com-nha-hang-xom.jpeg', 3, 1, '24h.net', 0, NULL, '2022-02-16 13:11:00'),
-	(4, 'Ăn hải sản siêu ngon với view biển cực xịn tại nhà hàng Hoàng Thao Seaview', 'an-hai-san-sieu-ngon-voi-view-bien-cuc-xin-tai-nha-hang-hoang-thao-seaview', 'Quy Nhơn nổi tiếng với thành phố biển trong lành, xinh đẹp, chính vì vậy mà hải sản Quy Nhơn cũng luôn là một sức hút đối với du khách khi đến với Quy Nhơn. Vậy đến Quy Nhơn ăn hải sản ở đâu ngon? Nhà hàng hải sản Quy Nhơn nào giá cả hợp túi tiền. Và nhà hàng Hoàng Thao Seaview chính là một câu trả lời hoàn hảo dành cho bạn.', 'img/news/an-hai-san-sieu-ngon-voi-view-bien-cuc-xin-tai-nha-hang-hoang-thao-seaview.jpeg', 1, 1, '24h.net', 1, NULL, '2022-02-16 13:12:00'),
-	(5, '“Chill” Tết đúng điệu với Florecita Mơ thanh nhẹ êm ái', 'chill-tet-dung-dieu-voi-florecita-mo-thanh-nhe-em-ai', 'Một năm đầy thử thách sắp qua đi, người chơi hệ “chill” luôn biết cách tạo ra nguồn hứng khởi để lên dây cót tinh thần cho năm mới. Giữa không khí ấm cúng thân mật của những cuộc sum họp quây quần, một thức uống tinh tế đượm vị sẽ khiến mọi khoảnh khắc đều trọn vẹn ý nghĩa.', 'img/news/chill-tet-dung-dieu-voi-florecita-mo-thanh-nhe-em-ai.jpeg', 1, 1, 'Dân Việt', 0, NULL, '2022-02-16 13:14:00'),
-	(6, 'Con bị sổ mũi, nghẹt mũi có nguy cơ biến chứng nặng thậm chí nguy hiểm tính mạng', 'con-bi-so-mui-nghet-mui-co-nguy-co-bien-chung-nang-tham-chi-nguy-hiem-tinh-mang', 'Các bác sĩ khuyến cáo, khi dùng thuốc nhỏ mũi cho trẻ nhỏ, bố mẹ phải hết sức lưu ý vì nếu nhầm lẫn có thể gây ra những hậu quả nặng nề, ảnh hưởng xấu đến sự phát triển của trẻ.', 'img/news/con-bi-so-mui-nghet-mui-co-nguy-co-bien-chung-nang-tham-chi-nguy-hiem-tinh-mang.jpeg', 1, 1, 'Do Ba Truong', 1, NULL, '2022-02-16 13:18:00'),
-	(7, 'Nghi phạm bắn vợ chồng hàng xóm ở Thái Nguyên sử dụng súng quân dụng', 'nghi-pham-ban-vo-chong-hang-xom-o-thai-nguyen-su-dung-sung-quan-dung', 'Quá trình điều tra, cơ quan công an xác định loại súng mà nghi phạm Hữu sử dụng là súng quân dụng.', 'img/news/nghi-pham-ban-vo-chong-hang-xom-o-thai-nguyen-su-dung-sung-quan-dung.jpeg', 3, 0, 'Đức Sơn', 0, NULL, '2022-02-16 13:20:00'),
-	(8, 'Tìm hiểu 6 món đặc sản mang đậm phong vị núi rừng Tây Bắc', 'tim-hieu-6-mon-dac-san-mang-dam-phong-vi-nui-rung-tay-bac', 'Đến Lai Châu vào đúng thời điểm, bạn có thể thưởng thức nhiều món ăn độc đáo và hấp dẫn, mang đậm bản sắc của vùng núi Tây Bắc.', 'img/news/tim-hieu-6-mon-dac-san-mang-dam-phong-vi-nui-rung-tay-bac.jpeg', 3, 0, 'Sức khỏe đời sống', 1, NULL, '2022-02-23 13:23:00'),
-	(9, 'Hành trình lan tỏa Tết có Tường An Cát Tường An Khang 2022', 'hanh-trinh-lan-toa-tet-co-tuong-an-cat-tuong-an-khang-2022', 'Tường An chính thức khép lại hoạt động Mâm đại cỗ online Cát Tường An Khang với nhiều món ngon được đóng góp kèm theo lời chúc Cát Tường An Khang được lan toả khắp mọi miền đất nước, cùng hi vọng một năm mới 2022 tươi sáng, đầy khởi sắc.', 'img/news/hanh-trinh-lan-toa-tet-co-tuong-an-cat-tuong-an-khang-2022.jpeg', 1, 0, 'Truong Ba Do', 0, NULL, '2022-02-23 13:26:00'),
-	(10, 'Phụ gia thực phẩm với sức khỏe người tiêu dùng', 'phu-gia-thuc-pham-voi-suc-khoe-nguoi-tieu-dung', 'Ngày nay, công nghệ bảo quản và chế biến thực phẩm đóng vai trò rất quan trọng nhằm nâng cao giá trị của thực phẩm. Hương vị, sự bắt mắt là những yếu tố quan trọng của chất lượng thực phẩm.', 'img/news/phu-gia-thuc-pham-voi-suc-khoe-nguoi-tieu-dung.jpeg', 8, 0, 'ThS.BS NGUYỄN VĂN TIẾN', 1, NULL, '2022-02-09 13:27:00'),
-	(11, 'Bộ Y tế: Hạn chế thấp nhất lượng phụ gia có trong thực phẩm', 'bo-y-te-han-che-thap-nhat-luong-phu-gia-co-trong-thuc-pham', 'SKĐS - Bộ Y tế đã ban hành Thông tư số 24/2019/TT-BYT quy định về quản lý và sử dụng Phụ gia thực phẩm. Tại Thông tư này, Bộ Y tế yêu cầu phải hạn chế mức thấp nhất lượng phụ gia thực phẩm và việc sử dụng phụ gia phải đảm bảo không làm thay đổi bản chất của thực phẩm.', 'img/news/bo-y-te-han-che-thap-nhat-luong-phu-gia-co-trong-thuc-pham.jpeg', 8, 1, 'Thái Bình', 0, NULL, '2022-02-17 13:28:00'),
-	(12, 'Đường phố TP.HCM tấp nập trở lại', 'duong-pho-tphcm-tap-nap-tro-lai', 'TTO - Sáng 17-8, đường phố TP.HCM tấp nập hơn những ngày trước đây khi một số lĩnh vực được phép hoạt động. Công an tính toán có khoảng 1 triệu lượt người ra đường những ngày này.', 'img/news/duong-pho-tphcm-tap-nap-tro-lai.jpeg', 5, 0, ' MINH HÒA', 0, NULL, '2022-02-23 13:31:00'),
-	(13, 'Soda Na2CO3 nào được dùng làm nước mắm?', 'soda-na2co3-nao-duoc-dung-lam-nuoc-mam', 'TTO - Theo quy định của Bộ Y tế, soda Na2CO3 được phép sử dụng trong thực phẩm nhưng phải là loại dùng cho thực phẩm, còn Na2CO3 loại dùng trong công nghiệp rất độc hại cho sức khỏe.', 'img/news/soda-na2co3-nao-duoc-dung-lam-nuoc-mam.jpeg', 4, 0, 'LAN ANH - TRẦN HUỲNH - MINH HẢI', 0, NULL, '2022-02-15 23:32:00');
+	(1, 'Ăn uống vô độ ngày Tết gây hại thế nào', 'an-uong-vo-do-ngay-tet-gay-hai-the-nao', 'Ăn uống mất kiểm soát với tâm lý “thả ga một lần một năm&amp;quot; có thể dẫn đến các vấn đề sức khỏe như tăng cân, trào ngược dạ dày, rối loạn giấc ngủ. ', 'img/news/an-uong-vo-do-ngay-tet-gay-hai-the-nao.jpeg', 1, 1, 'Thục Linh', 0, 0, '2022-02-16 11:26:00'),
+	(2, 'Ăn gì thanh lọc cơ thể sau Tết?', 'an-gi-thanh-loc-co-the-sau-tet', 'Sau Tết tôi bị tăng cân và ngấy thức ăn, nên bổ sung món gì vào thực đơn để thanh lọc cơ thể, ăn ngon miệng và không béo. (Ngọc, 36 tuổi, Hà Nội) ', 'img/news/an-gi-thanh-loc-co-the-sau-tet.jpeg', 1, 0, 'Lương y Bùi Đắc Sáng', 1, 0, '2022-02-16 11:26:00'),
+	(3, 'Bí quyết giữ chân các ông chồng thích ăn cơm “nhà hàng xóm”', 'bi-quyet-giu-chan-cac-ong-chong-thich-an-com-nha-hang-xom', 'Bếp Dasavis với các Đầu bếp Thượng hạng tận tâm chế biến các món ăn ngon sẽ giúp các chị em không còn phải vất vả đi chợ nấu cơm hay chế biến món nhậu cho các ông chồng sau ngày dài bận rộn với công việc. Các bà vợ sẽ không phải mệt mỏi với những cuộc điện thoại gọi chồng về khi các ông ấy la cà ngoài hàng quán hay sang để vợ ông hàng xóm nấu.', 'img/news/bi-quyet-giu-chan-cac-ong-chong-thich-an-com-nha-hang-xom.jpeg', 3, 1, '24h.net', 0, 0, '2022-02-16 13:11:00'),
+	(4, 'Ăn hải sản siêu ngon với view biển cực xịn tại nhà hàng Hoàng Thao Seaview', 'an-hai-san-sieu-ngon-voi-view-bien-cuc-xin-tai-nha-hang-hoang-thao-seaview', 'Quy Nhơn nổi tiếng với thành phố biển trong lành, xinh đẹp, chính vì vậy mà hải sản Quy Nhơn cũng luôn là một sức hút đối với du khách khi đến với Quy Nhơn. Vậy đến Quy Nhơn ăn hải sản ở đâu ngon? Nhà hàng hải sản Quy Nhơn nào giá cả hợp túi tiền. Và nhà hàng Hoàng Thao Seaview chính là một câu trả lời hoàn hảo dành cho bạn.', 'img/news/an-hai-san-sieu-ngon-voi-view-bien-cuc-xin-tai-nha-hang-hoang-thao-seaview.jpeg', 1, 1, '24h.net', 1, 0, '2022-02-16 13:12:00'),
+	(5, '“Chill” Tết đúng điệu với Florecita Mơ thanh nhẹ êm ái', 'chill-tet-dung-dieu-voi-florecita-mo-thanh-nhe-em-ai', 'Một năm đầy thử thách sắp qua đi, người chơi hệ “chill” luôn biết cách tạo ra nguồn hứng khởi để lên dây cót tinh thần cho năm mới. Giữa không khí ấm cúng thân mật của những cuộc sum họp quây quần, một thức uống tinh tế đượm vị sẽ khiến mọi khoảnh khắc đều trọn vẹn ý nghĩa.', 'img/news/chill-tet-dung-dieu-voi-florecita-mo-thanh-nhe-em-ai.jpeg', 1, 1, 'Dân Việt', 0, 0, '2022-02-16 13:14:00'),
+	(6, 'Con bị sổ mũi, nghẹt mũi có nguy cơ biến chứng nặng thậm chí nguy hiểm tính mạng', 'con-bi-so-mui-nghet-mui-co-nguy-co-bien-chung-nang-tham-chi-nguy-hiem-tinh-mang', 'Các bác sĩ khuyến cáo, khi dùng thuốc nhỏ mũi cho trẻ nhỏ, bố mẹ phải hết sức lưu ý vì nếu nhầm lẫn có thể gây ra những hậu quả nặng nề, ảnh hưởng xấu đến sự phát triển của trẻ.', 'img/news/con-bi-so-mui-nghet-mui-co-nguy-co-bien-chung-nang-tham-chi-nguy-hiem-tinh-mang.jpeg', 1, 1, 'Do Ba Truong', 155, 0, '2022-02-16 13:18:00'),
+	(7, 'Nghi phạm bắn vợ chồng hàng xóm ở Thái Nguyên sử dụng súng quân dụng', 'nghi-pham-ban-vo-chong-hang-xom-o-thai-nguyen-su-dung-sung-quan-dung', 'Quá trình điều tra, cơ quan công an xác định loại súng mà nghi phạm Hữu sử dụng là súng quân dụng.', 'img/news/nghi-pham-ban-vo-chong-hang-xom-o-thai-nguyen-su-dung-sung-quan-dung.jpeg', 3, 0, 'Đức Sơn', 9, 0, '2022-02-16 13:20:00'),
+	(8, 'Tìm hiểu 6 món đặc sản mang đậm phong vị núi rừng Tây Bắc', 'tim-hieu-6-mon-dac-san-mang-dam-phong-vi-nui-rung-tay-bac', 'Đến Lai Châu vào đúng thời điểm, bạn có thể thưởng thức nhiều món ăn độc đáo và hấp dẫn, mang đậm bản sắc của vùng núi Tây Bắc.', 'img/news/tim-hieu-6-mon-dac-san-mang-dam-phong-vi-nui-rung-tay-bac.jpeg', 3, 0, 'Sức khỏe đời sống', 1, 0, '2022-02-23 13:23:00'),
+	(9, 'Hành trình lan tỏa Tết có Tường An Cát Tường An Khang 2022', 'hanh-trinh-lan-toa-tet-co-tuong-an-cat-tuong-an-khang-2022', 'Tường An chính thức khép lại hoạt động Mâm đại cỗ online Cát Tường An Khang với nhiều món ngon được đóng góp kèm theo lời chúc Cát Tường An Khang được lan toả khắp mọi miền đất nước, cùng hi vọng một năm mới 2022 tươi sáng, đầy khởi sắc.', 'img/news/hanh-trinh-lan-toa-tet-co-tuong-an-cat-tuong-an-khang-2022.jpeg', 1, 0, 'Truong Ba Do', 0, 0, '2022-02-23 13:26:00'),
+	(10, 'Phụ gia thực phẩm với sức khỏe người tiêu dùng', 'phu-gia-thuc-pham-voi-suc-khoe-nguoi-tieu-dung', 'Ngày nay, công nghệ bảo quản và chế biến thực phẩm đóng vai trò rất quan trọng nhằm nâng cao giá trị của thực phẩm. Hương vị, sự bắt mắt là những yếu tố quan trọng của chất lượng thực phẩm.', 'img/news/phu-gia-thuc-pham-voi-suc-khoe-nguoi-tieu-dung.jpeg', 8, 0, 'ThS.BS NGUYỄN VĂN TIẾN', 2, 0, '2022-02-09 13:27:00'),
+	(11, 'Bộ Y tế: Hạn chế thấp nhất lượng phụ gia có trong thực phẩm', 'bo-y-te-han-che-thap-nhat-luong-phu-gia-co-trong-thuc-pham', 'SKĐS - Bộ Y tế đã ban hành Thông tư số 24/2019/TT-BYT quy định về quản lý và sử dụng Phụ gia thực phẩm. Tại Thông tư này, Bộ Y tế yêu cầu phải hạn chế mức thấp nhất lượng phụ gia thực phẩm và việc sử dụng phụ gia phải đảm bảo không làm thay đổi bản chất của thực phẩm.', 'img/news/bo-y-te-han-che-thap-nhat-luong-phu-gia-co-trong-thuc-pham.jpeg', 8, 1, 'Thái Bình', 32, 0, '2022-02-17 13:28:00'),
+	(12, 'Đường phố TP.HCM tấp nập trở lại', 'duong-pho-tphcm-tap-nap-tro-lai', 'TTO - Sáng 17-8, đường phố TP.HCM tấp nập hơn những ngày trước đây khi một số lĩnh vực được phép hoạt động. Công an tính toán có khoảng 1 triệu lượt người ra đường những ngày này.', 'img/news/duong-pho-tphcm-tap-nap-tro-lai.jpeg', 5, 0, ' MINH HÒA', 0, 0, '2022-02-23 13:31:00'),
+	(13, 'Soda Na2CO3 nào được dùng làm nước mắm?', 'soda-na2co3-nao-duoc-dung-lam-nuoc-mam', 'TTO - Theo quy định của Bộ Y tế, soda Na2CO3 được phép sử dụng trong thực phẩm nhưng phải là loại dùng cho thực phẩm, còn Na2CO3 loại dùng trong công nghiệp rất độc hại cho sức khỏe.', 'img/news/soda-na2co3-nao-duoc-dung-lam-nuoc-mam.jpeg', 4, 0, 'LAN ANH - TRẦN HUỲNH - MINH HẢI', 0, 0, '2022-02-15 23:32:00');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 
 -- Dumping structure for table online_news.personal_access_tokens
@@ -143,12 +143,12 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   `expired_at` datetime NOT NULL,
   `last_used_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table online_news.personal_access_tokens: ~1 rows (approximately)
 /*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
 INSERT INTO `personal_access_tokens` (`id`, `user_id`, `token`, `secret`, `expired_at`, `last_used_at`) VALUES
-	(7, 1, '75bd698c7e96021b5d6d7a3fcead197658008ce763fceb01302ce7fb8a491373054d276fe632033e9a5241790b51a050e3f9da54d09bf0e80e88212d6b9a6828', 'edefaedbfefaaffccdabbadcddafcfeeabfeaeaebadedfbeefdbaecabfddbfa', '2022-02-18 09:05:27', '2022-02-17 09:05:27');
+	(9, 1, '057e784314538421d698e299e1eda0cd3f9bd5a4c6c22ac6a7264814a5b729f24ddb92c9c29241816fd8a78fc1ebd44455cc8d81e26aed0d967871f935d912b5', 'bafeeedaafdcddddedadaafafbdfddcddefbdfdebbeadfefdebfcdcbefffaebeffddadecbac', '2022-02-19 18:54:04', '2022-02-18 18:54:04');
 /*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
 
 -- Dumping structure for table online_news.users
@@ -163,14 +163,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `level` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table online_news.users: ~2 rows (approximately)
+-- Dumping data for table online_news.users: ~1 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `address`, `password`, `photo`, `level`, `created_at`) VALUES
-	(1, 'Đỗ Bá Trường', 'dobatruongbk48@gmail.com', '0988041615', 'Đan Tảo, Tân Minh, Sóc Sơn, Hà Nội', '$2y$10$qixIiltrFicbzEJICh74D.ORC6rKVUA.97e8tdNdwA8NCGqAuS2Cu', 'http://localhost/news/public/img/avatar/do-ba-truong.png', 0, '2022-02-04 14:23:56'),
-	(2, 'Test name', 'dobatruongdsbk48@gmail.com', NULL, NULL, '$2y$10$M9A6XOdLdNJcLnIDfv2MZ.GIMtp3HxVixcDEJz054DBfNSXvv7Ic.', NULL, 1, '2022-02-07 11:12:34'),
-	(3, 'Đỗ Thị Xuân', 'dothixuan91@gmail.com', NULL, NULL, '$2y$10$rIwLINddnBdkXikDQljS1OgiNgui27GPqW2H8cpUr4IXZ8B.CvP1i', NULL, 1, '2022-02-13 10:31:14');
+	(1, 'Đỗ Bá Trường', 'dobatruongbk48@gmail.com', '0988041615', 'Đan Tảo, Tân Minh, Sóc Sơn, Hà Nội', '$2y$10$qixIiltrFicbzEJICh74D.ORC6rKVUA.97e8tdNdwA8NCGqAuS2Cu', 'img/avatar/do-ba-truong.png', 0, '2022-02-04 14:23:56');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
