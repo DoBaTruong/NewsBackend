@@ -4,7 +4,7 @@ namespace app\repostories;
 use app\exceptions\InternalServerException;
 use app\helpers\ImageHelper;
 use app\models\CategoryModel;
-use app\models\DetailNewsModel;
+use app\models\DetailNewModel;
 use app\models\NewsModel;
 use libs\Response;
 
@@ -47,7 +47,7 @@ class NewsRepostory
     public static function create($news, $detail)
     {
         $newsModel = new NewsModel();
-        $detailModel = new DetailNewsModel();
+        $detailModel = new DetailNewModel();
         try {
             $newsResult = $newsModel->create($news);
             $detail['news_id'] = $newsResult['id'];
@@ -67,7 +67,7 @@ class NewsRepostory
     public static function delete($data)
     {
         $modelNews = new NewsModel();
-        $modelDetail = new DetailNewsModel();
+        $modelDetail = new DetailNewModel();
 
         try {
             if(is_array($data) && count($data) > 1) {
@@ -102,12 +102,13 @@ class NewsRepostory
     public static function getBySlug($slug)
     {
         $model = new NewsModel();
-        $detailModel = new DetailNewsModel();
+        $detailModel = new DetailNewModel();
         $model->where(['slug', $slug]);
 
         try {
             $news = $model->first();
-            $detail = $detailModel->getById($news['id']);
+            $detailModel->where(['news_id', $news['id']]);
+            $detail = $detailModel->first();
             $news['content'] = $detail['content'];
             return $news;
         } catch (\Exception $ex) {
@@ -171,7 +172,7 @@ class NewsRepostory
     public static function update($id, $data, $detail)
     {
         $model = new NewsModel();
-        $modeldetail = new DetailNewsModel();
+        $modeldetail = new DetailNewModel();
         try {
             $news = $model->update($id, $data);
             if(count($detail) > 1) {

@@ -73,14 +73,14 @@ class NewsController extends Controller
         ];
 
         $detail = [
-            'content' => $content
+            'content' => addslashes($content)
         ];
 
         $result = NewsRepostory::create($news, $detail);
 
         Response::json(200, [
             'code' => 200,
-            'message' => 'Danh mục đã tạo thành công.',
+            'message' => 'Bài viết đã tạo thành công.',
             'result' => $result
         ]);
     }

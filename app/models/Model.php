@@ -81,8 +81,9 @@ class Model extends Database
         } catch (\Exception $e) {
             $error = new InternalServerException();
             Response::json(200, [
-                'code' => $error->getCode(),
-                'message' => $error->getMessage(),
+                'sql' => $sql,
+                'code' => $e->getCode(),
+                'message' => $e->getMessage(),
             ]);
             exit;
         }
