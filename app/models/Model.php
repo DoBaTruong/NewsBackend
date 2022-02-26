@@ -76,15 +76,10 @@ class Model extends Database
             $statements = $this->execute($sql);
             $data['id'] = $this->connect->lastInsertId();
             $this->connect->commit();
+            return $data;
         } catch (\Exception $e) {
-            $error = new InternalServerException();
-            Response::json(200, [
-                'code' => $error->getCode(),
-                'message' => $error->getMessage(),
-            ]);
-            exit;
+            return null;
         }
-        return $data;
     }
 
     public function update($id, $data = [])
