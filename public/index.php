@@ -6,7 +6,7 @@ use libs\Response;
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET,POST,PUT,PATCH,DELETE");
 header('Access-Control-Allow-Credentials: true');
-header('Content-Type: plain/text');
+header('Content-Type: application/json');
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Methods,Access-Control-Allow-Origin, Access-Control-Allow-Credentials, X-Refresh-Token, X-Access-Token, Authorization, X-Requested-With");
 
 require_once '../app/App.php';
