@@ -1,9 +1,7 @@
 <?php
 namespace app\models;
 
-use app\exceptions\InternalServerException;
 use libs\Database;
-use libs\Response;
 
 class Model extends Database
 {
@@ -250,12 +248,7 @@ class Model extends Database
         try {
             return $statements;
         } catch (\Exception $e) {
-            $error = new InternalServerException();
-            Response::json(200, [
-                'code' => $error->getCode(),
-                'message' => $error->getMessage(),
-            ]);
-            exit;
+            return false;
         }
     }
 
@@ -265,15 +258,10 @@ class Model extends Database
             $this->connect->beginTransaction();
             $statements = $this->execute($sql);
             $this->connect->commit();
+            return $statements;
         } catch (\Exception $e) {
-            $error = new InternalServerException();
-            Response::json(200, [
-                'code' => $error->getCode(),
-                'message' => $error->getMessage(),
-            ]);
-            exit;
+            return false;
         }
-        return $statements;
     }
 
     public function hidden($results)
